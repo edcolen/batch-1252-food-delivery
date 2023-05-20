@@ -18,4 +18,21 @@ class MealsController
     @meal_repository.create(meal)
     list
   end
+
+  def edit
+    list
+    id = @view.ask_user_for('id').to_i
+    meal = @meal_repository.find(id)
+    meal.name = @view.edit('name', meal.name)
+    meal.price = @view.edit('price', meal.price).to_i
+    @meal_repository.update
+    list
+  end
+
+  def remove
+    list
+    id = @view.ask_user_for('id').to_i
+    @meal_repository.destroy(id)
+    list
+  end
 end

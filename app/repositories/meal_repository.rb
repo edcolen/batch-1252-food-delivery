@@ -20,6 +20,15 @@ class MealRepository
     @meals
   end
 
+  def update
+    save_csv
+  end
+
+  def destroy(id)
+    @meals = @meals.reject { |meal| meal.id == id }
+    save_csv
+  end
+
   def find(id)
     @meals.find { |meal| meal.id == id }
   end

@@ -20,6 +20,15 @@ class CustomerRepository
     @customers
   end
 
+  def update
+    save_csv
+  end
+
+  def destroy(id)
+    @customers = @customers.reject { |customer| customer.id == id }
+    save_csv
+  end
+
   def find(id)
     @customers.find { |customer| customer.id == id }
   end
