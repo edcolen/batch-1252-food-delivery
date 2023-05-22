@@ -7,6 +7,13 @@ class MealsView
     end
   end
 
+  def display_with_index(meals)
+    puts 'No meals yet' if meals.empty?
+    meals.each_with_index do |meal, i|
+      puts "#{i + 1}. #{meal.name} ($#{meal.price})"
+    end
+  end
+
   def ask_user_for(info)
     question = info == 'id' ? "Choose a meal:" : "What's the meal's #{info}?"
     puts question
