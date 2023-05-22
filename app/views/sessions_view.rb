@@ -1,9 +1,10 @@
+require 'io/console'
 class SessionsView
   def ask_user_for(info)
     question = info == 'id' ? "Choose an employee:" : "Type your #{info}"
     puts question
     print '> '
-    gets.chomp
+    info == 'password' ? $stdin.noecho(&:gets).chomp : gets.chomp
   end
 
   def print_wrong_credentials
